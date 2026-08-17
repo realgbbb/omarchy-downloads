@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "realgbb.downloads",
+  "name": "Downloads",
+  "version": "1.0.0",
+  "author": "realgbb",
+  "license": "MIT",
+  "description": "Recent files from your downloads folder in the Omarchy bar, with instant arrival feedback, one-key open, and trash.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Downloads",
+    "description": "Watch your downloads folder — newest file is preselected, Enter opens it.",
+    "category": "Files",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "folder": "",
+      "maxFiles": 25,
+      "highlightSeconds": 6
+    },
+    "schema": [
+      {
+        "key": "folder",
+        "type": "string",
+        "label": "Folder to watch",
+        "placeholder": "Defaults to your XDG download directory",
+        "defaultValue": ""
+      },
+      {
+        "key": "maxFiles",
+        "type": "integer",
+        "label": "Files listed",
+        "min": 3,
+        "max": 100,
+        "step": 1,
+        "defaultValue": 25
+      },
+      {
+        "key": "highlightSeconds",
+        "type": "integer",
+        "label": "Arrival highlight (seconds)",
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "defaultValue": 6
+      }
+    ]
+  }
+}
