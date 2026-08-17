@@ -1,4 +1,4 @@
-# Downloads — quick access to your downloads folder, and one-key open
+# Downloads — quick access to your Downloads folder, and one-key open
 
 Omarchy runs beautiful chromeless web apps — which is exactly why there is no
 downloads button anywhere on screen. This widget puts the downloads icon back in
