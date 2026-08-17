@@ -1,9 +1,17 @@
-# Downloads — an Omarchy bar widget
+# Downloads — quick access to your downloads folder, and one-key open
 
-Your downloads folder, in the bar, built around the two-second errand: a file
-lands, you glance at the bar, hit the keybind, press Enter, and it's open.
+Omarchy runs beautiful chromeless web apps — which is exactly why there is no
+downloads button anywhere on screen. This widget puts the downloads icon back in
+your status bar. The newest file is already selected when the panel opens, so
+Enter opens it; any other recent file opens by typing its number. Built for
+Omarchy keyboard users.
 
 ![The panel, open, with the newest download selected](docs/panel.png)
+
+Bind it to **SUPER + SHIFT + J**, borrowing the muscle memory from your browser,
+and internalise *SUPER + SHIFT + J, Enter* — that's your latest download open.
+No opening the downloads folder just to double-click one file, no file manager
+tiling itself across the workspace, nothing to close afterwards.
 
 ## What it does
 

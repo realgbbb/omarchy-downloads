@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "realgbb",
   "license": "MIT",
-  "description": "Recent files from your downloads folder in the Omarchy bar, with instant arrival feedback, one-key open, and trash.",
+  "description": "Quick access to your downloads folder and one-key open of downloaded files. Chromeless web apps leave you without a downloads button — this puts one in the bar, newest file preselected, Enter to open, numbers for the rest.",
   "kinds": [
     "bar-widget"
   ],
@@ -14,7 +14,7 @@
   },
   "barWidget": {
     "displayName": "Downloads",
-    "description": "Watch your downloads folder — newest file is preselected, Enter opens it.",
+    "description": "Your downloads folder in the bar — newest file preselected, Enter opens it, 1-9 open the rest.",
     "category": "Files",
     "allowMultiple": false,
     "defaultSection": "right",
