@@ -444,7 +444,15 @@ Panel {
       }
     }
 
+    // The trash button is a mouse affordance only, so it tracks the pointer
+    // rather than the panel cursor. `trashHovered` is what keeps it from
+    // blinking out from under the pointer: once the button's own MouseArea
+    // takes the hover, the row's no longer has it.
+    property bool trashHovered: false
+    readonly property bool mouseOver: rowMouse.containsMouse || trashHovered
+
     MouseArea {
+      id: rowMouse
       anchors.fill: parent
       hoverEnabled: true
       cursorShape: Qt.PointingHandCursor
@@ -492,6 +500,26 @@ Panel {
         }
       }
 
+      // Always in the layout so the row never reflows. Revealed by the pointer
+      // alone, not by the keyboard cursor: on the keyboard the trash is `t`,
+      // and a delete button that lights up as you arrow past a row is an
+      // invitation nobody asked for.
+      PanelActionButton {
+        iconText: "󰩹"
+        tooltipText: "Move to trash"
+        foreground: downloadsPanel.foreground
+        hoverColor: downloadsPanel.urgent
+        fontFamily: downloadsPanel.fontFamily
+        opacity: fileRow.mouseOver ? 1.0 : 0.0
+        Layout.alignment: Qt.AlignVCenter
+        onClicked: downloads.trashFile(fileRow.file)
+        onHovered: function(on) { fileRow.trashHovered = on }
+
+        Behavior on opacity {
+          NumberAnimation { duration: 90 }
+        }
+      }
+
       // Row number, on the trailing edge, in a ring that fills solid when the
       // cursor lands on the row — so the key you would press and the row Enter
       // would open read as the same thing. The slot keeps its width past row 9
@@ -531,23 +559,6 @@ Panel {
         }
       }
 
-      // Always in the layout so the row never reflows; revealed on hover and on
-      // the keyboard cursor, which are the same state by CursorSurface contract.
-      PanelActionButton {
-        iconText: "󰩹"
-        tooltipText: "Move to trash"
-        foreground: downloadsPanel.foreground
-        hoverColor: downloadsPanel.urgent
-        fontFamily: downloadsPanel.fontFamily
-        opacity: fileRow.hasCursor ? 1.0 : 0.0
-        enabled: fileRow.hasCursor
-        Layout.alignment: Qt.AlignVCenter
-        onClicked: downloads.trashFile(fileRow.file)
-
-        Behavior on opacity {
-          NumberAnimation { duration: 90 }
-        }
-      }
     }
   }
 
