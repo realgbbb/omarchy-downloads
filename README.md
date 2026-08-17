@@ -26,21 +26,13 @@ lands, you glance at the bar, hit the keybind, press Enter, and it's open.
 ## Install
 
 ```bash
-git clone https://github.com/realgbbb/omarchy-downloads \
-  ~/.config/omarchy/plugins/realgbb.downloads
-```
-
-Add it to the bar in `~/.config/omarchy/shell.json`:
-
-```json
-{ "id": "realgbb.downloads" }
-```
-
-Then reload the shell so the new QML is picked up:
-
-```bash
+omarchy plugin add https://github.com/realgbbb/omarchy-downloads --enable
 omarchy restart shell
 ```
+
+That clones the plugin to `~/.config/omarchy/plugins/realgbb.downloads` and adds
+`{ "id": "realgbb.downloads" }` to the bar in `~/.config/omarchy/shell.json`. To
+do it by hand instead, clone to that path yourself and add the same entry.
 
 Optionally bind a key in `~/.config/hypr/bindings.lua`. `SUPER + J` is
 Omarchy's own "Toggle window split", so this uses the free chord next door:
@@ -48,6 +40,18 @@ Omarchy's own "Toggle window split", so this uses the free chord next door:
 ```lua
 o.bind("SUPER + SHIFT + J", "Downloads", "omarchy-shell shell toggle realgbb.downloads")
 ```
+
+## Remove
+
+```bash
+omarchy plugin remove realgbb.downloads
+omarchy restart shell
+```
+
+That deletes the plugin folder and drops the widget from the bar. Nothing else
+to clean up: the plugin writes no state, no cache, and no files of its own
+outside `~/.config/omarchy/plugins/realgbb.downloads` and its one entry in
+`shell.json`. Your keybinding, if you added one, is yours to remove.
 
 ## Keys
 
